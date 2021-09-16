@@ -5,10 +5,6 @@ const {
 const db = require('./db/index')
 const api = require('./api/index')
 
-const router = require('@koa/router');
-const Koa = require('koa');
-const bodyparser = require('koa-bodyparser')
-
 async function startServer () {
   const DB = new db ({
     DB_NAME
