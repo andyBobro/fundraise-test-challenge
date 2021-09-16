@@ -1,9 +1,10 @@
+require('module-alias/register')
 const {
   DB_NAME,
   PORT
-} = require('./config/constants')
-const db = require('./db/index')
-const api = require('./api/index')
+} = require('config/constants')
+const api = require('api/index')
+const db = require('db/index')
 
 async function startServer () {
   const DB = new db ({
