@@ -1,0 +1,52 @@
+* {
+  @apply box-border;
+}
+
+html,
+body {
+  @apply min-h-screen w-full text-base font-normal;
+  font-family: 'Noto Sans', sans-serif;
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+}
+
+
+.app-wrapper {
+  @apply min-h-screen;
+}
+
+a {
+  @apply text-green-500;
+  &:hover {
+    @apply text-green-900 transition-all;
+  }
+}
+
+p {
+  @apply text-base;
+}
+
+b {
+  @apply font-bold;
+}
+
+small {
+  @apply text-xs;
+}
+
+h1 {
+  @apply text-4xl font-bold;
+}
+
+h3 {
+  @apply text-2xl font-bold;
+}
+
+h6 {
+  @apply text-xl;
+}

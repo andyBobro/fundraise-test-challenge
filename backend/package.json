@@ -1,0 +1,24 @@
+{
+  "name": "funds_backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "server": "nodemon index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@koa/router": "^10.1.1",
+    "dotenv": "^10.0.0",
+    "glob": "^7.1.7",
+    "koa": "^2.13.1",
+    "koa-bodyparser": "^4.3.0",
+    "koa-logger": "^3.2.1",
+    "mongoose": "^6.0.5",
+    "node-fetch": "^3.0.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.12"
+  }
+}
