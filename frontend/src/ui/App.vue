@@ -1,17 +1,22 @@
 <template>
-  <main class="app-wrapper">
+  <Page>
     <Nav />
     <router-view />
-  </main>
+    <Copyright />
+  </Page>
 </template>
 
 <script>
 import Nav from "ui/components/common/Nav/index.vue";
+import Page from "ui/components/common/Page/index.vue";
+import Copyright from "ui/components/common/Copyright/index.vue";
 
 export default {
   name: "App",
   components: {
     Nav,
+    Page,
+    Copyright,
   },
 };
 </script>

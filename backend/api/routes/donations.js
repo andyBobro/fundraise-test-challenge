@@ -5,16 +5,18 @@ function donationRoutes (db, controller) {
   return {
     endpoint: '/donations',
     methods: {
-      post (ctx, next) {
-        const response = donationsController.makeResponse(ctx)
+      async post (ctx, next) {
+        const response = await donationsController.makeResponsePost(ctx)
         
         ctx.response = response
+        
         next()
       },
-      get (ctx, next) {
-        // db.getRecord(payload)
-        ctx.response.status = 200
-        ctx.response.body = 'get'
+      async get (ctx, next) {
+        const response = await donationsController.getTopDonaters(ctx)
+
+        ctx.response = response
+
         next()
       }
     }

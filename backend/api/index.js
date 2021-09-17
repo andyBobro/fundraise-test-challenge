@@ -3,7 +3,7 @@ const router = require('@koa/router');
 // const koaBody = require('koa-body');
 const bodyparser = require('koa-bodyparser')
 const Koa = require('koa');
-
+const cors = require('@koa/cors');
 const requireAllRoutes = require('./routes/index')
 const requireAllControllers = require('./controllers/index')
 
@@ -17,6 +17,7 @@ class API {
     this.app = new Koa();
     this.db = DB
     this.logger = logger
+    this.cors = cors
     this.controllers = requireAllControllers()
     this.routes = requireAllRoutes(this.db, this.controllers)
     this.koaRouter = router
@@ -25,6 +26,7 @@ class API {
   initMiddlewares () {
     this.app.use(bodyparser())
     this.app.use(this.logger())
+    this.app.use(this.cors())
     this.initRoutes()
   }
 

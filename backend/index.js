@@ -15,6 +15,7 @@ async function startServer () {
     DB,
     PORT
   })
+  
   const dbConnection = await DB.initDBConnection()
 
   DB.prepareSchemasAndModels()

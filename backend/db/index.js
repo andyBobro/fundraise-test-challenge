@@ -23,11 +23,8 @@ class DB {
     return this.models[name].create(payload)
   }
 
-  async getRecord(name, params, sort, limit) {
-    let result = await this.models[name].find(params)
-
-    result = (sort && (await result.sort(sort)))
-    result = (limit && (await result.limit(limit)))
+  getRecord(name, params) {
+    const result = this.models[name].find(params)
 
     return result
   }

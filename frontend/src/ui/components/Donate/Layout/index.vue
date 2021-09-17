@@ -10,7 +10,7 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .layout {
   @apply relative w-screen h-screen overflow-hidden;
 }

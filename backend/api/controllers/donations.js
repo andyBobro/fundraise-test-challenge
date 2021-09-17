@@ -8,7 +8,7 @@ class donationsController {
     this.db = db
   }
 
-  verifyDonationPayload (payload) {
+  verifyPostPayload (payload) {
     const values = [this.verifyCurrency(payload.currency), this.verifyAmount(payload.amount)]
     const res = values.every((v) => v) 
     const errors = !res && ({
@@ -30,8 +30,8 @@ class donationsController {
     return !!amount
   }
 
-  makeResponse (ctx) {
-    const validated = this.verifyDonationPayload(ctx.request.body)
+  makeResponsePost (ctx) {
+    const validated = this.verifyPostPayload(ctx.request.body)
 
     if (validated.valid) {
       this.saveDonate(ctx.request.body)
@@ -67,6 +67,16 @@ class donationsController {
 
   async saveDonate (donate) {
     await this.db.createRecord('donations', donate)
+  }
+
+  async getTopDonaters (ctx) {
+    const donaters = await this.db.getRecord('donations').limit(5)
+    const { response } = ctx
+
+    response.status = 200
+    response.body = JSON.stringify(donaters)
+
+    return response
   }
 }
 

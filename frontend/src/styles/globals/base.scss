@@ -16,15 +16,20 @@ body {
 }
 
 
-.app-wrapper {
-  @apply min-h-screen;
+a {
+  @apply text-blue-800 underline;
+  &:hover {
+    @apply text-blue-500 no-underline transition-all;
+  }
 }
 
-a {
-  @apply text-green-500;
-  &:hover {
-    @apply text-green-900 transition-all;
-  }
+p,
+b,
+small,
+h1,
+h3,
+h6 {
+  @apply text-blue-800;
 }
 
 p {
