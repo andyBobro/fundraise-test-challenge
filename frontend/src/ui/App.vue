@@ -21,5 +21,4 @@ export default {
 };
 </script>
 
-<style lang="scss" src="styles/globals/index.scss">
-</style>
+<style lang="scss" src="styles/globals/index.scss"></style>
