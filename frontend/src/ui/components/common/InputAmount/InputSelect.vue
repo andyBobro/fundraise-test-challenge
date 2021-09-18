@@ -41,12 +41,6 @@ export default {
   @apply relative h-full;
   &__input {
     @apply block w-full border-l-2 border-blue-200 border-dotted h-full text-xs text-gray-800 pt-2 pr-3 pb-2 pl-4 rounded-md border-0 focus:outline-none;
-    // -moz-appearance: none;
-    // -webkit-appearance: none;
-    // appearance: none;
-    // &::-ms-expand {
-    //   @apply hidden;
-    // }
   }
 }
 </style>

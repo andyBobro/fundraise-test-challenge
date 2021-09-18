@@ -17,7 +17,7 @@
 </template>
 
 <script>
-import { currencies } from "utils/constants";
+import { currencies, SUPPORTED_CURRENCIES } from "utils/constants";
 import InputSelect from "./InputSelect.vue";
 import InputSum from "./InputSum.vue";
 
@@ -34,35 +34,18 @@ export default {
   },
   data() {
     return {
-      selectedAmount: {
-        amount: 0,
-        currency: Object.keys(currencies)[0],
-      },
+      selectedAmount: this.value,
       currencies,
+      SUPPORTED_CURRENCIES,
     };
   },
   computed: {
     options() {
-      return Object.values(this.currencies).map(({ code }) => ({
+      return this.SUPPORTED_CURRENCIES.map((code) => ({
         value: code,
         label: code,
       }));
     },
-  },
-  methods: {
-    select() {
-      this.selectedAmount = this.value;
-    },
-    onCurrencyChange(e) {
-      this.selectedAmount.currency = e;
-    },
-    onSumInput(e) {
-      console.log(e);
-      this.selectedAmount.amount = e;
-    },
-  },
-  mounted() {
-    this.select();
   },
   watch: {
     selectedAmount: {
@@ -70,9 +53,6 @@ export default {
       handler(newVal) {
         this.$emit("input", newVal);
       },
-    },
-    value(val) {
-      this.selectedAmount = val;
     },
   },
 };

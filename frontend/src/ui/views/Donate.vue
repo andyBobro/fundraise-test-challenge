@@ -1,7 +1,7 @@
 <template>
   <div class="donate">
     <h3 class="donate__heading">Donate us and help pc gamers!</h3>
-    <DonateForm :rates="rates" />
+    <DonateForm :donated="donated" :rates="rates" @donate="donate" />
   </div>
 </template>
 
@@ -14,6 +14,7 @@ export default {
   data() {
     return {
       rates: null,
+      donated: false,
     };
   },
   components: {
@@ -24,19 +25,22 @@ export default {
     async getRates() {
       const rates = await api.rates.get();
 
-      console.log(rates);
-
       this.rates = {
         base: rates.base,
         rates: rates.rates,
       };
     },
-    donate() {},
+    async donate(e) {
+      const response = await api.donations.post(e);
+
+      if (response.status === 200) {
+        this.donated = true;
+      }
+    },
   },
   mounted() {
     this.getRates();
   },
-  beforeDestroy() {},
 };
 </script>
 

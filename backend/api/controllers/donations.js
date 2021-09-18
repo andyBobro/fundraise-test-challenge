@@ -45,7 +45,10 @@ class donationsController {
     const { response } = ctx
 
     response.status = 200
-    response.body = messages.success
+    response.body = {
+      message: messages.success,
+      status: 200
+    }
 
     return response
   }
@@ -70,7 +73,7 @@ class donationsController {
   }
 
   async getTopDonaters (ctx) {
-    const donaters = await this.db.getRecord('donations').limit(5)
+    const donaters = await this.db.getRecord('donations')
     const { response } = ctx
 
     response.status = 200

@@ -10,9 +10,13 @@ export default {
 
       return donaters;
     },
-    async post() {
+    async post(data) {
       const response = await request("http://localhost:9999/donations", {
         method: "POST",
+        headers: {
+          'Content-Type': 'application/json;charset=utf-8'
+        },
+        body: JSON.stringify({...data})
       });
 
       return response;
