@@ -1,4 +1,4 @@
-# invester
+# Donate frontend
 
 ## Project setup
 ```
@@ -7,7 +7,7 @@ yarn install
 
 ### Compiles and hot-reloads for development
 ```
-yarn serve
+yarn frontend
 ```
 
 ### Compiles and minifies for production
