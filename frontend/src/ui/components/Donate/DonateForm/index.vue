@@ -9,7 +9,7 @@
       <input
         class="donate-form__name"
         type="text"
-        placeholder="Name"
+        placeholder="Name (optional)"
         v-model="value.name"
       />
       <div class="donate-form__suggestions">
