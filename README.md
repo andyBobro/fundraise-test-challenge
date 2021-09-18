@@ -15,4 +15,4 @@
 
 `POST` - create donation
 
-`GET` = get all donations
+`GET` - get all donations
