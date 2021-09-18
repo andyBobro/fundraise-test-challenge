@@ -38,8 +38,16 @@ export default {
       };
     },
     async donate(e) {
+      const { name, amount, currency } = e;
+      const payload = {
+        amount,
+        currency,
+      };
+
+      !!name && (payload.name = name);
+
       try {
-        const response = await api.donations.post(e);
+        const response = await api.donations.post(payload);
 
         if (response.ok) {
           this.donated = true;

@@ -6,6 +6,12 @@
       <button class="donate-form__button" @click="again">Donate again!</button>
     </div>
     <template v-else>
+      <input
+        class="donate-form__name"
+        type="text"
+        placeholder="Name"
+        v-model="value.name"
+      />
       <div class="donate-form__suggestions">
         <Suggestion
           v-for="sug in currentSuggestions"
@@ -78,6 +84,7 @@ export default {
       value: {
         amount: 40,
         currency: BASE_CURRENCY,
+        name: "",
       },
       defaultSuggestions: [40, 100, 200, 1000, 2500, 5000],
       currencies,
@@ -123,6 +130,9 @@ export default {
   @apply relative w-96 mt-8 ml-auto mr-auto p-6 border-2 border-dotted border-blue-600;
   &__thanks {
     @apply text-center;
+  }
+  &__name {
+    @apply block w-full h-12 mb-8 pl-4 pr-4 border-solid border-blue-400 border-2;
   }
   &__suggestions {
     @apply flex flex-wrap mb-8;
