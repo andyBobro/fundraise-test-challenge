@@ -1,7 +1,4 @@
-import {
-  BASE_CURRENCY,
-  SUPPORTED_CURRENCIES
-} from 'utils/constants'
+import { BASE_CURRENCY, SUPPORTED_CURRENCIES } from "utils/constants";
 
 export default {
   donations: {
@@ -14,9 +11,9 @@ export default {
       const response = await request("http://localhost:9999/donations", {
         method: "POST",
         headers: {
-          'Content-Type': 'application/json;charset=utf-8'
+          "Content-Type": "application/json;charset=utf-8",
         },
-        body: JSON.stringify({...data})
+        body: JSON.stringify({ ...data }),
       });
 
       return response;
@@ -44,5 +41,7 @@ async function request(url, options) {
 
 function getCurrenciesExchangeURL(base, symbols) {
   // https://api.exchangerate.host/
-  return `https://api.exchangerate.host/latest?base=${base}&symbols=${symbols.join(",")}`;
+  return `https://api.exchangerate.host/latest?base=${base}&symbols=${symbols.join(
+    ","
+  )}`;
 }
