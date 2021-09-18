@@ -60,7 +60,7 @@ export default {
 
 <style lang="scss">
 .input-amount {
-  @apply flex h-12 mb-8 border-solid border-blue-400 border-2;
+  @apply flex h-12 mb-1 border-solid border-blue-400 border-2;
   &__symbol {
     @apply flex items-center justify-center w-12 text-blue-600 text-2xl border-r-2 border-blue-200 border-dotted;
   }

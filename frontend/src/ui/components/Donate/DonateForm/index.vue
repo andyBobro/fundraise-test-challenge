@@ -20,6 +20,16 @@
 
       <InputAmount v-model="value" />
 
+      <div class="donate-form__errors">
+        <div
+          class="donate-form__error"
+          v-for="(error, e) in errors"
+          :key="`donate_form_error_${e}`"
+        >
+          {{ error }}
+        </div>
+      </div>
+
       <button class="donate-form__button" @click="donate">Donate</button>
 
       <div
@@ -56,6 +66,12 @@ export default {
       type: Boolean,
       default: false,
     },
+    errors: {
+      type: Array,
+      default() {
+        return [];
+      },
+    },
   },
   data() {
     return {
@@ -66,7 +82,6 @@ export default {
       defaultSuggestions: [40, 100, 200, 1000, 2500, 5000],
       currencies,
       base: BASE_CURRENCY,
-      errors: [],
     };
   },
   computed: {
@@ -100,28 +115,23 @@ export default {
       this.$emit("again");
     },
   },
-  // watch: {
-  //   value: {
-  //     deep: true,
-  //     handler(v) {
-  //       console.log(v);
-  //     },
-  //   },
-  // },
 };
 </script>
 
 <style lang="scss">
 .donate-form {
-  @apply relative w-96 ml-auto mr-auto p-6 border-2 border-dotted border-blue-600;
+  @apply relative w-96 mt-8 ml-auto mr-auto p-6 border-2 border-dotted border-blue-600;
   &__thanks {
     @apply text-center;
   }
   &__suggestions {
     @apply flex flex-wrap mb-8;
   }
+  &__error {
+    @apply mt-1 text-xs text-red-500;
+  }
   &__button {
-    @apply flex items-center justify-center w-full h-10 p-4 border-dotted text-blue-800 border-blue-400 border transition-all hover:text-white hover:bg-blue-400 hover:border-white;
+    @apply flex items-center justify-center w-full h-10 mt-8 p-4 border-dotted text-blue-800 border-blue-400 border transition-all hover:text-white hover:bg-blue-400 hover:border-white;
   }
   &__loading {
     @apply absolute w-full h-full top-0 left-0 bg-white opacity-0 invisible transition-all;

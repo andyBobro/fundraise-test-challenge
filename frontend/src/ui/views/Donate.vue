@@ -3,8 +3,9 @@
     <h3 class="donate__heading">Donate us and help pc gamers!</h3>
     <DonateForm
       :donated="donated"
-      @again="again"
       :rates="rates"
+      :errors="errors"
+      @again="again"
       @donate="donate"
     />
   </div>
@@ -20,6 +21,7 @@ export default {
     return {
       rates: null,
       donated: false,
+      errors: [],
     };
   },
   components: {
@@ -36,10 +38,16 @@ export default {
       };
     },
     async donate(e) {
-      const response = await api.donations.post(e);
+      try {
+        const response = await api.donations.post(e);
 
-      if (response.status === 200) {
-        this.donated = true;
+        if (response.ok) {
+          this.donated = true;
+        } else {
+          this.errors = response;
+        }
+      } catch (e) {
+        //
       }
     },
     again() {

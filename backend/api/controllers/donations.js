@@ -47,7 +47,7 @@ class donationsController {
     response.status = 200
     response.body = {
       message: messages.success,
-      status: 200
+      ok: true
     }
 
     return response
