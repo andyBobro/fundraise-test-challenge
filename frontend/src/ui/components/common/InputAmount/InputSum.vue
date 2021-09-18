@@ -22,7 +22,7 @@ export default {
   },
   methods: {
     onInput(e) {
-      this.$emit("input", e.target.value);
+      this.$emit("input", +e.target.value);
     },
     onKeydown(e) {
       if (this.shouldPrevent(e)) {

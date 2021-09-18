@@ -1,7 +1,12 @@
 <template>
   <div class="donate">
     <h3 class="donate__heading">Donate us and help pc gamers!</h3>
-    <DonateForm :donated="donated" :rates="rates" @donate="donate" />
+    <DonateForm
+      :donated="donated"
+      @again="again"
+      :rates="rates"
+      @donate="donate"
+    />
   </div>
 </template>
 
@@ -36,6 +41,9 @@ export default {
       if (response.status === 200) {
         this.donated = true;
       }
+    },
+    again() {
+      this.donated = false;
     },
   },
   mounted() {

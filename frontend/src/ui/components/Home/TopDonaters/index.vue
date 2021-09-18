@@ -8,9 +8,7 @@
       <Donater
         v-for="donater in donaters"
         :key="donater._id"
-        :date="donater.date"
-        :name="donater.name"
-        :amount="donater.amount"
+        :donater="donater"
       />
     </div>
   </div>

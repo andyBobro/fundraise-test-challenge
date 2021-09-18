@@ -1,6 +1,10 @@
 <template>
   <div class="donate-form">
-    <h1 class="donate-form__thanks" v-if="donated">Thank you for your help!</h1>
+    <div class="donate-form__thanks" v-if="donated">
+      <h1 class="donate-form__thanks-caption">Thank you for your help!</h1>
+
+      <button class="donate-form__button" @click="again">Donate again!</button>
+    </div>
     <template v-else>
       <div class="donate-form__suggestions">
         <Suggestion
@@ -16,7 +20,7 @@
 
       <InputAmount v-model="value" />
 
-      <button class="donate-form__submit" @click="donate">Donate</button>
+      <button class="donate-form__button" @click="donate">Donate</button>
 
       <div
         :class="[
@@ -62,6 +66,7 @@ export default {
       defaultSuggestions: [40, 100, 200, 1000, 2500, 5000],
       currencies,
       base: BASE_CURRENCY,
+      errors: [],
     };
   },
   computed: {
@@ -91,7 +96,18 @@ export default {
     donate() {
       this.$emit("donate", this.value);
     },
+    again() {
+      this.$emit("again");
+    },
   },
+  // watch: {
+  //   value: {
+  //     deep: true,
+  //     handler(v) {
+  //       console.log(v);
+  //     },
+  //   },
+  // },
 };
 </script>
 
@@ -104,7 +120,7 @@ export default {
   &__suggestions {
     @apply flex flex-wrap mb-8;
   }
-  &__submit {
+  &__button {
     @apply flex items-center justify-center w-full h-10 p-4 border-dotted text-blue-800 border-blue-400 border transition-all hover:text-white hover:bg-blue-400 hover:border-white;
   }
   &__loading {
@@ -112,6 +128,9 @@ export default {
     &--active {
       @apply opacity-60 visible;
     }
+  }
+  &__thanks-caption {
+    @apply mb-8;
   }
 }
 </style>
