@@ -8,6 +8,7 @@ Node.js v16.8.0
 - vue 2 frontend
 - tailwind css
 
+For details about lanching see readme files in `backend` and `frontend` directories
 
 ### API
 
