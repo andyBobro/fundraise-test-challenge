@@ -16,6 +16,7 @@ class API {
     this.port = PORT
     this.app = new Koa();
     this.db = DB
+    this.bodyparser = bodyparser
     this.logger = logger
     this.cors = cors
     this.controllers = requireAllControllers()

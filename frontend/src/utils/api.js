@@ -1,3 +1,8 @@
+import {
+  BASE_CURRENCY,
+  SUPPORTED_CURRENCIES
+} from 'utils/constants'
+
 export default {
   donations: {
     async get() {
@@ -16,13 +21,11 @@ export default {
   rates: {
     async get(
       { base, symbols } = {
-        base: "USD",
-        symbols: ["EUR", "GBP"],
+        base: BASE_CURRENCY,
+        symbols: SUPPORTED_CURRENCIES,
       }
     ) {
-      const rates = await request(
-        `/rates${getCurrenciesExchangeURL(base, symbols)}`
-      );
+      const rates = await request(getCurrenciesExchangeURL(base, symbols));
 
       return rates;
     },
@@ -37,5 +40,5 @@ async function request(url, options) {
 
 function getCurrenciesExchangeURL(base, symbols) {
   // https://api.exchangerate.host/
-  return `/latest?base=${base}&symbols=${symbols.join(",")}`;
+  return `https://api.exchangerate.host/latest?base=${base}&symbols=${symbols.join(",")}`;
 }
