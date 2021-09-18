@@ -1,5 +1,7 @@
 # FundraiseUp fullstack challenge
 
+Node.js v16.8.0
+
 ### Features:
 
 - simple and scalable backend with mongodb
