@@ -73,7 +73,7 @@ class donationsController {
   }
 
   async getTopDonaters (ctx) {
-    const donaters = await this.db.getRecord('donations')
+    const donaters = await this.db.getRecord('donations').sort([['amount', -1]]).limit(10)
     const { response } = ctx
 
     response.status = 200
