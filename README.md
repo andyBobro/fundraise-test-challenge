@@ -18,4 +18,4 @@ For details about lanching see readme files in `backend` and `frontend` director
 
 `POST` - create donation
 
-`GET` - get all donations
+`GET` - get top 10 donaters
