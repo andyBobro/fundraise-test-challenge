@@ -33,17 +33,46 @@ class API {
 
   initRoutes() {
     Object.values(this.routes).forEach((route) => {
-      const inited = this.initRoute(route)
+      const {
+        init, 
+        instance
+      } = this.getInstance(route)
+
+      const inited = this[init](instance, route)
 
       this.app.use(inited.routes()).use(inited.allowedMethods())
     })
   }
 
-  initRoute ({endpoint, methods}) {
-    const instance = new this.koaRouter()
-    
+  getInstance (route) {
+    if (route.prefix && route.routes) {
+      const { prefix } = route
+
+      return {
+        init: 'initPrefixedRoutes',
+        instance: new this.koaRouter({
+          prefix
+        })
+      }
+    }
+
+    return {
+      init: 'initRoute',
+      instance: new this.koaRouter()
+    }
+  }
+
+  initRoute (instance, {endpoint, methods}) {
     Object.entries(methods).forEach(([method, handler]) => {
       instance[method](endpoint, (ctx, next) => handler(ctx, next))
+    })
+
+    return instance
+  }
+
+  initPrefixedRoutes (instance, { routes }) {
+    routes.forEach((route) => {
+      this.initRoute(instance, route)
     })
 
     return instance
